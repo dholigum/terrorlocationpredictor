@@ -24,7 +24,6 @@ elev_data = './spatial_data/indo_gdem_compress.tif'
 ndvi_data = './spatial_data/ndvi_indonesia_raw.tif'
 
 rf = RandomForestClassifier()
-rf = joblib.load("./weights/rf_java.joblib")
 
 st.sidebar.title("Selamat Datang di Aplikasi Sistem Prediksi Lokasi Terorisme")
 st.sidebar.caption("dikembangkan oleh: Eca Indah Anggraini S.Si")
@@ -39,6 +38,21 @@ geocode = RateLimiter(geolocator.geocode, min_delay_seconds=1)
 
 if st.sidebar.button('Prediksi Terorisme'):
     location = geolocator.geocode(street+", "+city+", "+province+", "+country)
+    print(location.address)
+
+    if "Jawa" in location.address:
+        rf = joblib.load("./weights/rf_Jawa.joblib")
+    elif "Sumatera" in location.address:
+        rf = joblib.load("./weights/rf_Sumatera.joblib")
+    elif "Kalimantan" in location.address:
+        rf = joblib.load("./weights/rf_Kalimantan.joblib")
+    elif "Sulawesi" in location.address:
+        rf = joblib.load("./weights/rf_Sulawesi.joblib")
+    elif "Papua" in location.address:
+        rf = joblib.load("./weights/rf_Papua.joblib")
+    else:
+        st.subheader("Mohon maaf model untuk lokasi tersebut tidak tersedia ...")
+        exit()
 
     lat = location.latitude
     lon = location.longitude
@@ -70,7 +84,6 @@ if st.sidebar.button('Prediksi Terorisme'):
         row_idx, col_idx = src.index(lon, lat)
         ndvi = src.read(1, window=((row_idx, row_idx+1), (col_idx, col_idx+1)))[0][0]
 
-    print([pop_dense, night_light, urban_acc, elevation, ndvi])
     pred_res = rf.predict([[pop_dense, night_light, urban_acc, elevation, ndvi]])
     if pred_res[0] == 0:
         st.subheader("Hasil Prediksi: **:green[Lokasi Potensi Non-Terror]**")
