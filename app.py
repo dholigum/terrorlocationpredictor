@@ -18,8 +18,8 @@ st.set_page_config(
 )
 
 pop_data = './spatial_data/idn_pd_2020_1km_UNadj.tif'
-night_light_data = './spatial_data/idn_viirs_100m_2016.tif'
-urban_acc_data = './spatial_data/acc_50k.tif'
+night_light_data = './spatial_data/idn_viirs_ntl.tif'
+urban_acc_data = './spatial_data/acc_50k_idn.tif'
 elev_data = './spatial_data/indo_gdem_compress.tif'
 ndvi_data = './spatial_data/ndvi_indonesia_raw.tif'
 
