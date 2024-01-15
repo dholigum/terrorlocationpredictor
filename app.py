@@ -108,4 +108,4 @@ else:
     st.map(map_data, zoom=7)
 
 st.sidebar.text("Model RF yg digunakan adalah")
-st.sidebar.text("**Model Pulau {0}**".format(island))
+st.sidebar.text("*Model Pulau {0}*".format(island))
