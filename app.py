@@ -107,4 +107,5 @@ else:
     map_data = pd.DataFrame({'lat': [-6.2], 'lon': [106.81]})
     st.map(map_data, zoom=7)
 
-st.sidebar.text("Model RF yg digunakan adalah Model Pulau {0}".format(island))
+st.sidebar.text("Model RF yg digunakan adalah")
+st.sidebar.text("**Model Pulau {0}**".format(island))
