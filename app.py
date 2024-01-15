@@ -94,7 +94,7 @@ if st.sidebar.button('Prediksi Terorisme'):
     else:
         st.subheader("Hasil Prediksi: **:red[Lokasi Potensi Terrorisme]**")
     
-    st.map(map_data)
+    st.map(map_data, zoom=6)
     st.text("Titik koordinat: ({0}, {1})".format(lat, lon))
     st.text("Karakteristik Geospasial:")
     st.text("Kepadatan Penduduk: {:.2f} penduduk/km2".format(pop_dense))
@@ -105,7 +105,7 @@ if st.sidebar.button('Prediksi Terorisme'):
 
 else:
     map_data = pd.DataFrame({'lat': [-6.2], 'lon': [106.81]})
-    st.map(map_data, zoom=7)
+    st.map(map_data, zoom=6)
 
 st.sidebar.text("Model RF yg digunakan adalah")
 st.sidebar.text("*Model Pulau {0}*".format(island))
