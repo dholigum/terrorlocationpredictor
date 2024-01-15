@@ -11,7 +11,7 @@ import joblib
 
 # Setting page layout
 st.set_page_config(
-    page_title="Sistem Prediksi Lokasi Terorisme",  # Setting page title
+    page_title="SISDIKSI-TEROR: Sistem Prediksi Lokasi Potensi Terorisme di Indonesia",  # Setting page title
     page_icon="🛰️",     # Setting page icon
     layout="wide",      # Setting layout to wide
     initial_sidebar_state="expanded",    # Expanding sidebar by default
