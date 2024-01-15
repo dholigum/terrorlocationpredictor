@@ -11,7 +11,7 @@ import joblib
 
 # Setting page layout
 st.set_page_config(
-    page_title="SISDIKSI-TEROR: Sistem Prediksi Lokasi Potensi Terorisme di Indonesia",  # Setting page title
+    page_title="SISDIKSI-TEROR",  # Setting page title
     page_icon="🛰️",     # Setting page icon
     layout="wide",      # Setting layout to wide
     initial_sidebar_state="expanded",    # Expanding sidebar by default
@@ -25,7 +25,7 @@ ndvi_data = './spatial_data/ndvi_indonesia_raw.tif'
 
 rf = RandomForestClassifier()
 
-st.sidebar.title("Selamat Datang di Aplikasi Sistem Prediksi Lokasi Terorisme")
+st.sidebar.title("Selamat Datang di SISDIKSI-TEROR: Sistem Prediksi Lokasi Potensi Terorisme di Indonesia")
 st.sidebar.caption("dikembangkan oleh: Eca Indah Anggraini S.Si")
 st.sidebar.caption("sebagai syarat memperoleh gelar Magister dalam Teknologi Penginderaan")
 street = st.sidebar.text_input("Nama Jalan", "Jalan Raya Pasar Babelan")
