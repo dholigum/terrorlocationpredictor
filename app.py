@@ -33,6 +33,7 @@ country = st.sidebar.text_input("Negara", "Indonesia")
 
 geolocator = Nominatim(user_agent="GTA Lookup")
 geocode = RateLimiter(geolocator.geocode, min_delay_seconds=1)
+island = ""
 
 if st.sidebar.button('Prediksi Terorisme'):
     location = geolocator.geocode(street+", "+city+", "+province+", "+country)
@@ -40,14 +41,19 @@ if st.sidebar.button('Prediksi Terorisme'):
 
     if "Jawa" in location.address:
         rf = joblib.load("./weights/rf_Jawa.joblib")
+        island = "Jawa"
     elif "Sumatera" in location.address:
         rf = joblib.load("./weights/rf_Sumatera.joblib")
+        island = "Sumatera"
     elif "Kalimantan" in location.address:
         rf = joblib.load("./weights/rf_Kalimantan.joblib")
+        island = "Kalimantan"
     elif "Sulawesi" in location.address:
         rf = joblib.load("./weights/rf_Sulawesi.joblib")
+        island = "Sulawesi"
     elif "Papua" in location.address:
         rf = joblib.load("./weights/rf_Papua.joblib")
+        island = "Papua"
     else:
         st.subheader("Mohon maaf model untuk lokasi tersebut tidak tersedia ...")
         exit()
@@ -100,3 +106,5 @@ if st.sidebar.button('Prediksi Terorisme'):
 else:
     map_data = pd.DataFrame({'lat': [-6.2], 'lon': [106.81]})
     st.map(map_data, zoom=7)
+
+st.sidebar.text("Model RF yg digunakan adalah Model Pulau {0}".format(island))
